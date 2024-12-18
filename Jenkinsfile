@@ -1,4 +1,15 @@
 pipeline {
+    agent any
+    stages {
+        stage('Test GitHub Connection') {
+            steps {
+                sh 'git ls-remote https://github.com/jean-pacha/jenkins-example-playwright.git'
+            }
+        }
+    }
+}
+
+pipeline {
   agent { 
     docker { 
       image 'mcr.microsoft.com/playwright:v1.17.2-focal'
